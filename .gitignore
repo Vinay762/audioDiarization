@@ -1,0 +1,6 @@
+# add node modules to gitignore
+node_modules
+# add dist to gitignore
+dist
+# add .env to gitignore
+.env
