@@ -15,15 +15,27 @@ const dg = new Deepgram(DG_API_KEY);
 
 (async () => {
   try {
+    // const options = {
+    //   model: 'nova-2',
+    //   smart_format: true,
+    //   utt_split: 0.8,
+    //   diarize: true,
+    //   utterances : true,
+    //   detect_language: true,
+    // };
+
     const options = {
-      model: 'general',      // supports Hindi
-      tier: 'enhanced',      // noise reduction
-      punctuate: true,       // punctuation
-      diarize: true,         // speaker diarization
-      utterances: true,      // enable utterance-level segmentation
-      detect_language: true, // language detection
-      language: 'hi'         // force Hindi
+      model:  'general',       // generic “general” model
+      tier:   'enhanced',      // enhanced tier (best accuracy)
+      language:        'ta',   // force Tamil
+      detect_language: false,  // disable auto-detect
+      smart_format:    true,
+      punctuate:       true,
+      utterances:      true,
+      utt_split:       0.8,
+      diarize:         true,
     };
+    
 
     const resp = await dg.transcription.preRecorded({ url: AUDIO_URL }, options);
 
